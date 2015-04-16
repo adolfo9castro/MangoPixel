@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Diseño y desarrollo web Medellín - Mango Pixel</title>
+		<meta name="description" content="Somos Mango Pixel, una agencia digital dedicada al diseño y desarrollo web en Medellín y en Colombia. Sitios web personalizado, SEO, SEM, y marketing digital." />
+		<meta name="keywords" content="mango pixel, diseño y desarrollo web medellin, pagina web, sitio web" />
+		<link href="favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="style/stylesheet.css" />
+		<link rel="stylesheet" type="text/css" href="style/style.css" />
+		<link href='http://fonts.googleapis.com/css?family=Oswald:400,700,300' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Exo:400,100,100italic,200,200italic,300,300italic,400italic,500,500italic,600italic,700,700italic,800,800italic,900,900italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+		<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery.spritely.js"></script>
+		<script type="text/javascript" src="js/jquery.contactable.js"></script>	
+		<script type="text/javascript" src="js/functions.js"></script>
+		<script type="text/javascript" src="space_invaders/Sprites.js"></script>
+		<script type="text/javascript" src="space_invaders/Entidad.js"></script>
+		<script type="text/javascript" src="space_invaders/EntidadNave.js"></script>
+		<script type="text/javascript" src="space_invaders/EntidadDisparo.js"></script>
+		<script type="text/javascript" src="space_invaders/EntidadAlien.js"></script>
+		<script type="text/javascript" src="space_invaders/Juego.js"></script>		
+		<script>
+			var temporizador;
+			var juego;
+			function inicio(){
+				juego=new Juego();
+				
+				document.onkeydown=function(e){
+					juego.pulsarTecla(e);
+				};
+				document.onkeyup=function(e){
+					juego.soltarTecla(e);
+				};
+				
+				juego.constructor("contexto");
+				temporizador=setInterval("juego.controlLoop();",25);
+			}
+			function log(texto,nueva){
+				var capa=document.getElementById("log");
+				if (nueva)
+					capa.innerHTML+="<br/>"+texto;
+				else
+					capa.innerHTML=texto;
+			}
+			function parar(){
+				clearInterval(temporizador);
+			}
+
+		</script>
+	</head>
+	<body>
+
+		<header>
+			<!--<nav>
+				|HOME|NOSOTROS|DISEÑO Y DESARROLLO WEB|ECOMMERCE|MARKETING DIGITAL|REDES SOCIALES|PRODUCCIÓN AUDIOVISUAL|
+			</nav>-->
+			<div id="banner">
+				<img src="img/banner.jpg" />
+			</div>
+			<div id="logo">
+				<img src="img/Mango_Pixel_logo.png">
+				<h1>Diseño y desarrollo web Medellín - Mango Pixel</h1>
+				<h2>Bienvenido a nuestra web</h2>
+			</div>
+			<div id="formulario_contacto">
+			</div>
+		</header>
+
+		<section>
+
+			<div id="arbol_categorias_abrir">				
+			</div>
+			<div id="arbol_categorias_cerrar">				
+			</div>
+			<div id="nada">								
+			</div>
+			<div id="arbol_categorias">	
+				<div id="categoria_uno">
+					<h3>Agencia digital en Medellín<span id="categoria_uno_btn"> </span></h3>
+					<ul id="hijo_uno">
+						<li>Agencia web</li>
+						<li>Cómo crear una página web</li>
+						<li>Posicionamiento web</li>
+					</ul>
+				</div>
+				<div id="categoria_dos">
+					<h3>Diseño gráfico en Medellín<span id="categoria_dos_btn"> </span></h3>
+					<ul id="hijo_dos">
+						<li>Páginas web</li>
+						<li>Diseño web</li>
+						<li>Tiendas online</li>
+					</ul>
+				</div>
+				<div id="categoria_tres">
+					<h3>Producción audiovisual en Medellín<span id="categoria_tres_btn"> </span></h3>
+					<ul id="hijo_tres">
+						<li>Producción digital</li>
+						<li>Videos corporativos</li>
+						<li>Diseño multimedia</li>
+					</ul>
+				</div>
+			</div>
+
+			<div id="contenido">
+				<h3>Una agencia web a tu alcance.<br />
+				Esto es solo un abre vocas de lo que Mango Pixel y su equipo puede hacer por su empresa</h3>
+			</div>
+
+
+			<div id="space_invaders">								
+				<a class="pausar" onclick="parar()"></a>
+				<a class="start" onclick="inicio()"></a>
+				<div id="msj"></div>
+				<div id="intrucciones">
+					<p style="font-size: 20px">MANGOS INVASORES</p>
+					<p style="margin: 60px 0 30px 0">INSTRUCCIONES PARA JUGAR</p>
+					<p style="margin: 30px 0 30px 0">Disparar: Espacio</p>
+					<p style="margin: 20px 0">Mov izquierda: Flecha izquierda</p> 
+					<p style="margin: 20px 0">Mov Derecha: Flecha derecha</p>
+				</div>
+				<div id="start_game">
+				</div>
+				<canvas id="contexto"></canvas>								
+			</div>
+			
+		</section>
+
+		<footer>
+			<div id="footer">
+				<div id="social_media">
+					<span>siguénos:</span>
+					<a class="facebook" href="https://www.facebook.com/mangopixel" target="_blank"></a>
+					<a class="twitter" href="https://twitter.com/mangopixel" target="_blank"></a>
+					<a class="youtube" href="http://www.youtube.com/channel/UCdX8fgLH8i8K9INVybwChOA" target="_blank"></a>
+					<a class="gplus" href="https://plus.google.com/+MangopixelCo/" target="_blank"></a>
+					<a class="linkin" href="http://www.linkedin.com/company/mango-pixel" target="_blank"></a>
+				</div>
+				<div id="legal_contact">
+					<div id="legal">
+						<p>Aviso legal <span>Política de privacidad </span><span>Mapa del sitio</span></p>
+						<p>Mango pixel&#174; - 2013 Todos los derechos reservados</p>
+					</div>
+					<div id="contacto">
+					</div>
+				</div>
+			</div>
+		</footer>
+	</body>
+<html>

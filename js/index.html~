@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Diseño y desarrollo web Medellín - Mango Pixel</title>
+		<meta name="description" content="Somos Mango Pixel, una agencia digital dedicada al diseño y desarrollo web en Medellín y en Colombia. Sitios web personalizado, SEO, SEM, y marketing digital." />
+		<meta name="keywords" content="mango pixel, diseño y desarrollo web medellin, pagina web, sitio web" />
+		<link href="favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="style/style.css" />
+		<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery.spritely.js"></script>
+		<script type="text/javascript" src="js/functions.js"></script>
+		<script type="text/javascript" src="js/space_invaders/Sprites.js"></script>
+		<script type="text/javascript" src="js/space_invaders/Entidad.js"></script>
+		<script type="text/javascript" src="js/space_invaders/EntidadNave.js"></script>
+		<script type="text/javascript" src="js/space_invaders/EntidadDisparo.js"></script>
+		<script type="text/javascript" src="js/space_invaders/EntidadAlien.js"></script>
+		<script type="text/javascript" src="js/space_invaders/Juego.js"></script>		
+		<script>
+			var temporizador;
+			var juego;
+			function inicio(){
+				juego=new Juego();
+				
+				//Enlazamos los eventos de teclado
+				document.onkeydown=function(e){
+					juego.pulsarTecla(e);
+				};
+				document.onkeyup=function(e){
+					juego.soltarTecla(e);
+				};
+				
+				juego.constructor("contexto");
+				temporizador=setInterval("juego.controlLoop();",25);
+			}
+			function log(texto,nueva){
+				var capa=document.getElementById("log");
+				if (nueva)
+					capa.innerHTML+="<br/>"+texto;
+				else
+					capa.innerHTML=texto;
+			}
+			function parar(){
+				clearInterval(temporizador);
+			}
+		</script>
+	</head>
+	<body onload="inicio();">
+
+		<header>
+			<nav>
+				menú
+			</nav>
+			<div id="banner">
+				<img src="img/banner.jpg" />
+			</div>
+			<div id="logo">
+				<img src="img/Mango_Pixel_logo.png">
+				<h1>Diseño y desarrollo web Medellín - Mango Pixel</h1>
+				<h2>Bienvenido a nuestra web</h2>
+			</div>
+		</header>
+
+		<section>
+			<div id="contenido">
+				<h3>Una agencia web a tu alcance</h3>
+			</div>
+			<div id="space_invaders">
+				<canvas id="contexto"></canvas>
+				<button onclick="parar();">Parar</button>
+		<button onclick="inicio();">Empezar</button>
+		<div id="log"></div>
+			</div>
+		</section>
+
+		<footer>
+			Hola Mundo ke ase
+		</footer>
+
+	</body>
+<html>
